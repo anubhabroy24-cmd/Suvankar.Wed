@@ -41,9 +41,22 @@ tick();setInterval(tick,1000);
 /* add to calendar */
 var ev={t:'Reception of Suvankar & Sangita',loc:'Parui Bari, Kalinagar, Jagadishpur, Uluberia, Howrah, West Bengal',desc:'Reception at 6:00 PM. The wedding is on 26 January 2027. With love, the Parui and Mondal families.'};
 function esc(t){return t.replace(/,/g,'\\,').replace(/;/g,'\\;')}
-$('#gcal').href='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(ev.t)+'&dates=20270127T180000/20270127T220000&ctz=Asia/Kolkata&location='+encodeURIComponent(ev.loc)+'&details='+encodeURIComponent(ev.desc);
+var gcalBase='https://calendar.google.com/calendar/render?action=TEMPLATE'+
+  '&text='+encodeURIComponent(ev.t)+
+  '&dates=20270127T123000Z/20270127T163000Z'+
+  '&location='+encodeURIComponent(ev.loc)+
+  '&details='+encodeURIComponent(ev.desc);
+$('#gcal').href=gcalBase;
+$('#gcal').setAttribute('target','_blank');
+$('#gcal').setAttribute('rel','noopener');
 var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Wedding Invitation//EN','BEGIN:VEVENT','UID:suvankar-sangita-reception-20270127@invitation','DTSTAMP:20261124T000000Z','DTSTART:20270127T123000Z','DTEND:20270127T163000Z','SUMMARY:'+esc(ev.t),'LOCATION:'+esc(ev.loc),'DESCRIPTION:'+esc(ev.desc),'END:VEVENT','END:VCALENDAR'].join('\r\n');
-try{var il=$('#icsl');il.href=URL.createObjectURL(new Blob([ics],{type:'text/calendar'}));il.setAttribute('download','Suvankar-Sangita-Reception.ics');il.removeAttribute('target')}catch(e){}
+try{
+  var il=$('#icsl');
+  var icsData='data:text/calendar;charset=utf-8,'+encodeURIComponent(ics);
+  il.href=icsData;
+  il.setAttribute('download','Suvankar-Sangita-Reception.ics');
+  il.removeAttribute('target');
+}catch(e){}
 $('#addcal').onclick=function(){$('#calmenu').classList.add('on')};
 $('#calclose').onclick=function(){$('#calmenu').classList.remove('on')};
 $('#calmenu').onclick=function(e){if(e.target.id==='calmenu')e.target.classList.remove('on')};
