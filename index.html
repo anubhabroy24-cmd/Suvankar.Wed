@@ -108,10 +108,6 @@
  </div>
  <div class="hint">Swipe up</div>
 </section>
-<div class="calmenu" id="calmenu"><div class="sheet"><div class="h2" style="font-size:20px">Add to Calendar</div>
- <a class="btn" id="gcal" href="#" target="_blank" rel="noopener">Google Calendar</a>
- <a class="btn alt" id="icsl" href="#" target="_blank" rel="noopener">Apple / Outlook (.ics)</a>
- <button class="btn alt" id="calclose">Close</button></div></div>
 
 <!-- PAGE 4 -->
 <section class="page" id="p4" data-n="Functions">
@@ -198,6 +194,13 @@
  <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:14px"><button class="btn alt" id="top">↑ Back to start</button></div>
 </section>
 </main>
+
+<!-- Calendar popup — direct child of #app so it overlays correctly -->
+<div class="calmenu" id="calmenu"><div class="sheet"><div class="h2" style="font-size:20px">Add to Calendar</div>
+ <a class="btn" id="gcal" href="#" target="_blank" rel="noopener">Google Calendar</a>
+ <a class="btn alt" id="icsl" href="#" target="_blank" rel="noopener">Apple / Outlook (.ics)</a>
+ <button class="btn alt" id="calclose">Close</button></div></div>
+
 </div>
 
 <script src="js/main.js"></script>
